@@ -17,18 +17,19 @@ import { Options, Vue } from 'vue-class-component';
     disabled: Boolean
   },
   computed:{
-    formattedTime: function (){
-      if(this.time%60 < 10){
-        return Math.trunc(this.time/60)+":0"+this.time%60;
-      }
-      return Math.trunc(this.time/60)+":"+(this.time%60);
-    },
+    //formattedTime: function (){},
   }
 })
 export default class Counter extends Vue {
   time !: number
 
+  get formattedTime(){
+    if(this.time%60 < 10){
+      return Math.trunc(this.time/60)+":0"+this.time%60;
+    }
+    return Math.trunc(this.time/60)+":"+(this.time%60);
 
+  }
 
   pass(){
     this.$emit('pass')
